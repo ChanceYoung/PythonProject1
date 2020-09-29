@@ -27,17 +27,23 @@ class TransMatrix():
     def __init__(self,matrix = np.matrix('0 0; 0 0')):
         self.matrix = np.matrix('1 1; .5 -.5')
     
-    def __call__(self):
+    def __call__(self, cartpoint):
         #take in a point, dot product function on that point with the transformation matrix
         print(self.matrix)
 
-def test_transformpoint():
-    #point here
-    #out = transformer(point)
-    # assert (out == vector.all?) 
-    pass
+
+
 
 
 if __name__ == "__main__":
     transform.interface.cli()
 
+
+
+# Tests here
+def test_transformpoint():
+    
+    testpoint = np.array([[0],[1]])
+    out = matrix(testpoint)
+    assert (out == matrix.) 
+    pass
