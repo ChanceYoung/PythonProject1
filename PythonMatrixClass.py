@@ -1,3 +1,9 @@
+#Chance Young
+#last edited: 9/30/2020
+#Project Goal: Create a hug server with functionality for a board game, 
+#with the option of calculating for isometric coordinates or cartesian coordinates of a player and the enemies. 
+
+
 import numpy as np
 import hug 
 #map: map the matrix(x,y) to all points in the generated array e.g. (transform(),[pointlist])
