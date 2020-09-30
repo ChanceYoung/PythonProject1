@@ -21,6 +21,7 @@ import hug
 #/move (cart x, cart y) (will move your "player" to the specified coordinate)
 
 #Generator function that yields x y points
+#nums_squared_lc = [num**2 for num in range(5)] <<<< try this
 def boardGenerator():
     yield (x, y) for x in range(3) for y in range(3)
  
