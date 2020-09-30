@@ -1,8 +1,5 @@
 import numpy as np
 import hug 
-
-
-
 #map: map the matrix(x,y) to all points in the generated array e.g. (transform(),[pointlist])
 #function decorators: @hug is a function decorator
 
@@ -17,11 +14,26 @@ import hug
 #/position (cart x, cart y) (prints position in both cartesian and isometric)
 #/move (cart x, cart y) (will move your "player" to the specified coordinate)
 
+#Generator function that yields x y points
+def boardGenerator():
+    yield (x, y) for x in range(3) for y in range(3)
+ 
 
+for value in boardGenerator():
+    board.append(value)
+
+
+
+
+# create web server hug to call functions, this also counts as a function decorator 
 @hug.cli()
-@hug.get('/{x}/{y}') # create web server hug to call functions, this also counts as a function decorator 
-def transform(x: int,y: int):
-    return x + y
+@hug.get('/position') 
+def position():
+    pass
+
+
+
+
 
 class TransMatrix():
     def __init__(self,matrix = np.matrix('0 0; 0 0')):
@@ -36,14 +48,13 @@ class TransMatrix():
 
 
 if __name__ == "__main__":
-    transform.interface.cli()
-
+    position.interface.cli()
 
 
 # Tests here
 def test_transformpoint():
     
-    testpoint = np.array([[0],[1]])
-    out = matrix(testpoint)
-    assert (out == matrix.) 
+    #testpoint = np.array([[0],[1]])
+    #out = matrix(testpoint)
+    #assert (out == matrix.) 
     pass
