@@ -43,34 +43,42 @@ CharacterDict = {
 
 #Display the "Board",which is a list of points, to the player
 @hug.cli()
-#@hug.get('/board') 
+@hug.get('/board') 
 def board():
     board= [(x, y) for x in range(3) for y in range(3)] 
-    print(board)
-    #return board
+    return board
 
 #get the position of the player
 @hug.cli()
-#@hug.get('/position') 
+@hug.get('/position') 
 def position():
     p = CharacterDict["Player"]
     print(f'The current player position is {p}')
-    #return p
+    return p
 
 #update the player position inside the dictonary for the player and randomly for the enemies. 
 #note: If the player and the enemy are on the same square, the game is over. 
 @hug.cli()
-#@hug.get('/move/{x}/{y}') 
+@hug.get('/move/{x}/{y}') 
 def move(x,y):
+    err_string = "This point invalid, player not moved."
     if x > "2" or x < "0":
-        print("This point invalid, player not moved.")
+        print(err_string)
+        return err_string
     elif y > "2" or y < "0":
-        print("This point invalid, player not moved.")
+        print(err_string)
+        return err_string
+    else:
+        point = [[x,y]]
+        for i in Masterboard:
+            if point == Masterboard[0]:
+                return CharacterDict.update({"Player": Masterboard[i]})
+
 
 
 #/search
 @hug.cli()
-#@hug.get('/isometric')
+@hug.get('/isometric')
 def isometric():
     transmatrix = TransMatrix()
     trans = map(transmatrix,Masterboard)
@@ -84,5 +92,4 @@ def test_position():
     pass
 
 if __name__ == "__main__":
-    board.interface.cli()
-
+   pass
